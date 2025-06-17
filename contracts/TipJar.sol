@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: MIT
+
+//Maciel Norman Adrian
 pragma solidity ^0.8.24;
 
 contract TipJar {
