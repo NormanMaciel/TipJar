@@ -4,7 +4,7 @@ import TipJarAbi from "../artifacts/contracts/TipJar.sol/TipJar.json";
 
 dotenv.config();
 
-const CONTRACT_ADDRESS = ""; // Reemplazalo si hace falta
+const CONTRACT_ADDRESS = " "; // Reemplazalo por la dirección de tu contrato desplegado
 
 async function main() {
   const provider = new ethers.JsonRpcProvider(process.env.SEPOLIA_RPC_URL);

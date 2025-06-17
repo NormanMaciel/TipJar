@@ -8,7 +8,7 @@ dotenv.config();
 // Puedes ejecutar este script con:
 // npx ts-node scripts/interactConArg.ts nombre_funcion [argumentos]
 
-const CONTRACT_ADDRESS = ""; // reemplazá con la tuya
+const CONTRACT_ADDRESS = " "; // Reemplazalo por la dirección de tu contrato desplegado
 
 async function listTips(contract: ethers.Contract) {
   const count = await contract.getTipsCount();
