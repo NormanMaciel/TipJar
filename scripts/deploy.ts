@@ -1,13 +1,16 @@
 import { ethers } from "hardhat";
-import * as dotenv from "dotenv";
-dotenv.config();
 
 async function main() {
   const TipJar = await ethers.getContractFactory("TipJar");
   const tipJar = await TipJar.deploy();
+
   await tipJar.waitForDeployment();
 
-  console.log(`✅ TipJar desplegado en: ${tipJar.target}`);
+  const address = await tipJar.getAddress();
+  console.log("Contrato TipJar desplegado en:", address);
+
+  // Esto es útil para luego verificar
+  console.log(`Para verificar: npx hardhat verify --network sepolia ${address}`);
 }
 
 main().catch((error) => {
