@@ -36,6 +36,9 @@ describe("TipJar", function () {
     const initialBalance = await ethers.provider.getBalance(owner.address);
     const tx = await tipJar.connect(owner).withdraw();
     const receipt = await tx.wait();
+    if (!receipt) {
+      throw new Error("Transaction receipt is null");
+    }
     const gasUsed = receipt.gasUsed * receipt.gasPrice;
 
     const finalBalance = await ethers.provider.getBalance(owner.address);

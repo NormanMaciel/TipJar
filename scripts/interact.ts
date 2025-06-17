@@ -1,12 +1,15 @@
-import { ethers } from "hardhat";
+import { ethers } from "ethers";
 import * as dotenv from "dotenv";
+import TipJarAbi from "../artifacts/contracts/TipJar.sol/TipJar.json";
+
 dotenv.config();
 
-const CONTRACT_ADDRESS = "0xTU_CONTRATO_EN_SEPOLIA"; // reemplazalo
+const CONTRACT_ADDRESS = ""; // Reemplazalo si hace falta
 
 async function main() {
-  const [signer] = await ethers.getSigners();
-  const TipJar = await ethers.getContractAt("TipJar", CONTRACT_ADDRESS, signer);
+  const provider = new ethers.JsonRpcProvider(process.env.SEPOLIA_RPC_URL);
+  const wallet = new ethers.Wallet(`0x${process.env.PRIVATE_KEY}`, provider);
+  const TipJar = new ethers.Contract(CONTRACT_ADDRESS, TipJarAbi.abi, wallet);
 
   // Enviar propina
   const tipAmount = "0.01";
@@ -18,7 +21,7 @@ async function main() {
   console.log(`✅ Propina de ${tipAmount} ETH enviada.`);
 
   // Mostrar balance
-  const balance = await ethers.provider.getBalance(CONTRACT_ADDRESS);
+  const balance = await provider.getBalance(CONTRACT_ADDRESS);
   console.log(`💰 Balance actual del contrato: ${ethers.formatEther(balance)} ETH`);
 
   // Ejecutar withdraw (si sos el owner)
