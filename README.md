@@ -57,9 +57,9 @@ PRIVATE_KEY=tu_clave_privada_sin_0x
 git clone https://github.com/TU_USUARIO/TipJar.git
 cd TipJar
 npm init -y
-npm install
 npm install --save-dev hardhat
 npx hardhat
+npm install dotenv
 ```
 
 ### 2. Compilar el contrato
